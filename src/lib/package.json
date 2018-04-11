@@ -1,0 +1,21 @@
+{
+  "name": "@webfactor/ionic-privacy-service",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "url"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "main": "./bundles/ionic-privacy-service.umd.js",
+  "es2015": "./esm2015/ionic-privacy-service.js",
+  "module": "./esm5/ionic-privacy-service.es5.js",
+  "typings": "./ionic-privacy-service.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^5.0.0",
+    "@angular/common": "^5.0.0",
+    "@angular/http": "^5.0.0"
+  }
+}
