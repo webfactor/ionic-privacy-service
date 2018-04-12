@@ -5,13 +5,10 @@
 </ion-header>
 
 <ion-content>
+    <div padding [innerHTML]="document?.body | MarkdownToHtml" class="markdown"></div>
     <ion-list>
-        <ion-item text-wrap *ngIf="document?.body">
-            {{ document.body }}
-        </ion-item>
         <ion-item text-wrap *ngIf="document?.updatedAt">
-            {{ 'privacy.updatedAt' | translate }}:
-            {{ document.updatedAt | date: 'short'}}
+            {{ 'privacy.updatedAt' | translate }}: {{ document.updatedAt | date: 'short'}}
         </ion-item>
     </ion-list>
 </ion-content>

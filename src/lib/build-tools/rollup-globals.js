@@ -3,6 +3,7 @@ const rollupGlobals = {
   '@ionic/storage': '@ionic/storage',
   '@ngx-translate/core': '@ngx-translate/core',
   'moment': 'moment',
+  'markdown-to-html-pipe': 'markdown-to-html-pipe',
 
   'date-fns': 'date.fns',
   'codemirror': 'codemirror',

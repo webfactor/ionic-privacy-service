@@ -10,11 +10,6 @@ import moment from 'moment';
 
 import { PrivacyModalPage } from '../pages/privacy-modal/privacy-modal';
 
-/**
- * TODO:
- * --> Markdown
- */
-
 @Injectable()
 export class PrivacyService {
     private readonly storageKey: string = 'privacyConfirmedAt';

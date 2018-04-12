@@ -3,12 +3,19 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from 'ionic-angular';
+import { MarkdownToHtmlModule } from 'markdown-to-html-pipe';
 
 import { PrivacyModalPage } from './pages/privacy-modal/privacy-modal';
 import { PrivacyService } from './providers/privacy';
 
 @NgModule({
-    imports: [CommonModule, IonicModule, TranslateModule.forRoot(), IonicStorageModule.forRoot()],
+    imports: [
+        CommonModule,
+        IonicModule,
+        TranslateModule.forRoot(),
+        IonicStorageModule.forRoot(),
+        MarkdownToHtmlModule
+    ],
     declarations: [PrivacyModalPage],
     entryComponents: [PrivacyModalPage],
     exports: [PrivacyModalPage]

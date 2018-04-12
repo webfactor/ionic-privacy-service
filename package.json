@@ -27,6 +27,7 @@
     "@ngx-translate/core": "^9.1.1",
     "core-js": "^2.4.1",
     "ionic-angular": "^3.9.2",
+    "markdown-to-html-pipe": "^1.2.4",
     "moment": "^2.22.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
