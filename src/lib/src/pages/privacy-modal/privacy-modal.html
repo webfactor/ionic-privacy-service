@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ document?.title }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div padding [innerHTML]="document?.body | MarkdownToHtml" class="markdown"></div>
+    <ion-list>
+        <ion-item text-wrap *ngIf="document?.updatedAt">
+            {{ 'privacy.updatedAt' | translate }}: {{ document.updatedAt | date: 'short'}}
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons end>
+            <button ion-button icon-left (click)="onConfirm()">
+                <ion-icon name="check"></ion-icon>
+                {{ 'privacy.accept' | translate }}
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

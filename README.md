@@ -1,28 +1,53 @@
-# PrivacyService
+# Privacy Service
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
+Checks for updated privacy contents and shows a privacy confirmation dialog. ✅  
+The dialog can not be dismissed without confirmation.
 
-## Development server
+The following translations are needed:
+```json
+{
+    "privacy": {
+        "updatedAt": "letztes Update",
+        "accept": "Akzeptieren"
+    }
+}
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Methods:
+```typescript
+setUrl(url: string): void
+```
+Sets the url to the api. The privacy document should sit in _documents_ or _data.documents_ property of the response object. It should at least contain a _title_, _body_ and _updatedAt_ property.
 
-## Code scaffolding
+```typescript
+checkForPrivacyUpdates(autoConfirm: boolean = true): Promise<any> 
+```
+Checks for an updated privacy document since the last confirmation. 
+* Resolves if an updated document is present.
+* Rejects if there are no updates.
+* When using the _ autoConfirm_ flag, the promise resolves on confirmation.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```typescript
+presentConfirmationModal(): Promise<any>
+```
+Unconditionally presents the confirmation dialog, not taking the last confirmation date in concern.
+Resolves on confirmation.
 
-## Build
+## Example
+```typescript
+export class AppComponent implements OnInit {
+    constructor(private privacyService: PrivacyService) {}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    ngOnInit(): void {
+        this.privacyService.setUrl('http://webfactormedia.de/api/v1/documents');
+        this.privacyService.checkForPrivacyUpdates(true).then(
+            () => {
+                console.log('confirmed');
+            },
+            err => {
+                console.log('no updates');
+            }
+        );
+    }
+}
+```
